@@ -73,7 +73,7 @@ context = {
 def recipes_list(request):
     return render(request, "ledger/recipes_list.html", context)
 
-def recipe(request, recipe_id):
-    recipe_context = context["recipes"][recipe_id - 1]
+def recipe(request, recipe_idx):
+    recipe_context = context["recipes"][recipe_idx - 1]
     return render(request, "ledger/ingredients_list.html", recipe_context)
     
