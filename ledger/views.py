@@ -46,7 +46,7 @@ context = {
                     },
                     {
                         "name": "vinegar",
-                        "quantity": "1/2cup"
+                        "quantity": "1/2 cup"
                     },
                     {
                         "name": "water",
