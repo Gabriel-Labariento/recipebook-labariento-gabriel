@@ -2,8 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 # Create your views here.
+
+
 def index(request):
     return HttpResponse("Welcome to Gabe's Recipe Book")
+
 
 context = {
         "recipes": [
@@ -70,10 +73,11 @@ context = {
         ]
     }
 
+
 def recipes_list(request):
     return render(request, "ledger/recipes_list.html", context)
+
 
 def recipe(request, recipe_idx):
     recipe_context = context["recipes"][recipe_idx - 1]
     return render(request, "ledger/ingredients_list.html", recipe_context)
-    
