@@ -5,9 +5,7 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Welcome to Gabe's Recipe Book")
 
-
-def recipes_list(request):
-    context = {
+context = {
         "recipes": [
             {
                 "name": "Recipe 1",
@@ -71,4 +69,11 @@ def recipes_list(request):
             }
         ]
     }
+
+def recipes_list(request):
     return render(request, "ledger/recipes_list.html", context)
+
+def recipe(request, recipe_id):
+    recipe_context = context["recipes"][recipe_id - 1]
+    return render(request, "ledger/ingredients_list.html", recipe_context)
+    
