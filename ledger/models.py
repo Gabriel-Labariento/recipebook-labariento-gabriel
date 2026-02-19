@@ -21,8 +21,12 @@ class Recipe(models.Model):
     def get_absolute_url(self):
         return reverse('recipe_detail', args=[str(self.name)])
     
+    def get_link_string(self):
+        recipe_number = self.name.removeprefix("Recipe ")
+        return '/recipe/{}'.format(recipe_number)
+    
 
 class RecipeIngredient(models.Model):
-    quantity = models.PositiveIntegerField()
+    quantity = models.CharField(max_length=50)
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, related_name='recipe')
     recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ingredients')
