@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Recipe
+from .models import Recipe, Ingredient
 
 # Create your views here.
 
@@ -17,8 +17,13 @@ def recipes_list(request):
     return render(request, "ledger/recipes_list.html", context)
 
 
-def recipe(request, recipe_idx):
+def recipe(request, recipe_number):
+    recipe_name = "Recipe {}".format(recipe_number)
+    recipe = Recipe.objects.get(name=recipe_name)
+    recipe_ingredients = Ingredient.objects.filter(recipe__recipe__name=recipe_name)
+    context = {
+        'recipe': recipe,
+        'ingredients': recipe_ingredients
+    }
     
-
-    recipe_context = context["recipes"][recipe_idx - 1]
-    return render(request, "ledger/ingredients_list.html", recipe_context)
+    return render(request, "ledger/ingredients_list.html", context)
