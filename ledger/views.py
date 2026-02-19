@@ -20,10 +20,11 @@ def recipes_list(request):
 def recipe(request, recipe_number):
     recipe_name = "Recipe {}".format(recipe_number)
     recipe = Recipe.objects.get(name=recipe_name)
-    recipe_ingredients = Ingredient.objects.filter(recipe__recipe__name=recipe_name)
+    recipe_ingredients = Ingredient.objects.filter(
+                        recipe__recipe__name=recipe_name)
     context = {
         'recipe': recipe,
         'ingredients': recipe_ingredients
     }
-    
+
     return render(request, "ledger/ingredients_list.html", context)
