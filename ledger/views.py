@@ -27,4 +27,4 @@ def recipe(request, recipe_number):
         'ingredients': recipe_ingredients
     }
 
-    return render(request, "ledger/ingredients_list.html", context)
+    return render(request, "ledger/recipe_detail.html", context)
