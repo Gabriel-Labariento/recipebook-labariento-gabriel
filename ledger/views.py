@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
+
 from .models import Recipe, Ingredient
+
 
 # Create your views here.
 
@@ -16,7 +19,7 @@ def recipes_list(request):
     }
     return render(request, "ledger/recipes_list.html", context)
 
-
+@login_required
 def recipe(request, recipe_number):
     recipe_name = "Recipe {}".format(recipe_number)
     recipe = Recipe.objects.get(name=recipe_name)
