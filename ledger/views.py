@@ -19,6 +19,7 @@ def recipes_list(request):
     }
     return render(request, "ledger/recipes_list.html", context)
 
+
 @login_required
 def recipe(request, recipe_number):
     recipe_name = "Recipe {}".format(recipe_number)

@@ -10,6 +10,7 @@ class Profile(models.Model):
     name = models.CharField(max_length=50)
     bio = models.TextField(blank=True)
 
+
 class Ingredient(models.Model):
     name = models.CharField(max_length=100)
 

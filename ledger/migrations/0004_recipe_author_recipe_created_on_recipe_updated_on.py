@@ -15,12 +15,18 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='recipe',
             name='author',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='recipes', to='ledger.profile'),
+            field=models.ForeignKey(default=1,
+                                    on_delete=django
+                                    .db.models.deletion.CASCADE,
+                                    related_name='recipes',
+                                    to='ledger.profile'),
         ),
         migrations.AddField(
             model_name='recipe',
             name='created_on',
-            field=models.DateTimeField(auto_now_add=True, default=django.utils.timezone.now),
+            field=models.DateTimeField(auto_now_add=True,
+                                       default=django.
+                                       utils.timezone.now),
             preserve_default=False,
         ),
         migrations.AddField(
