@@ -24,6 +24,13 @@ class RecipeAdmin(admin.ModelAdmin):
     model = Recipe
     inlines = [RecipeIngredientInline]
 
+    fieldsets = [
+        ('Details', {
+            'fields': [
+                ('name', 'author'), 'image'
+            ]
+        })
+    ]
 
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.unregister(User)
