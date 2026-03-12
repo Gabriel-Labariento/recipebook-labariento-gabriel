@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView
 
 from .models import Recipe, Ingredient
-
+from .forms import RecipeForm
 
 # Create your views here.
 
@@ -32,3 +34,8 @@ def recipe(request, recipe_number):
     }
 
     return render(request, "ledger/recipe_detail.html", context)
+
+
+class RecipeAddView(LoginRequiredMixin, CreateView):
+    model = Recipe
+    form_class = RecipeForm
