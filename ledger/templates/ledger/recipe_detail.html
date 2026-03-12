@@ -4,7 +4,7 @@
     {% block content %}
     <h2>{{recipe.name}}</h2>
     {% if object.task_image %}
-        <img src="{{ object.task_image.url }}" alt="">
+        <img src="{{ recipe.image.url }}" alt="recipe.image.description">
     {% endif %}
     <h3>Recipe by {{recipe.author.name}}</h3>
     <ul>
