@@ -1,12 +1,12 @@
 {% extends 'ledger/base_ledger.html' %}
 {% load static %}
     {%block title%}Recipe Book | {{recipe.name}} {%endblock%}
-    {% block styles %}{% endblock %}
+    {% block styles %} <style> .recipe_image {max-width: 25rem;}</style>{% endblock %}
     {% block content %}
     <h2>{{recipe.name}}</h2>
     {% if recipe.image.all %}
         {% for image in recipe.image.all %}
-            <img src="{{ image.image.url }}" alt=" {{ image.image.description }}">
+            <img src="{{ image.image.url }}" alt=" {{ image.image.description }}" class="recipe_image">
         {% endfor %}
     {% endif %}
     <h3>Recipe by {{recipe.author.name}}</h3>
