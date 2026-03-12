@@ -43,7 +43,8 @@ class RecipeImageAddView(LoginRequiredMixin, CreateView):
     template_name = "ledger/recipe_add_image.html"
 
     def get_success_url(self):
-        return reverse_lazy('ledger:recipe_detail', kwargs={ 'pk': self.object.recipe.pk })
+        return reverse_lazy('ledger:recipe_detail',
+                            kwargs={'pk': self.object.recipe.pk})
 
 
 class RecipeAddView(LoginRequiredMixin, CreateView):
@@ -51,4 +52,5 @@ class RecipeAddView(LoginRequiredMixin, CreateView):
     form_class = RecipeForm
 
     def get_success_url(self):
-        return reverse_lazy('ledger:recipe_detail', kwargs={ 'pk': self.object.pk })
+        return reverse_lazy('ledger:recipe_detail',
+                            kwargs={'pk': self.object.pk})

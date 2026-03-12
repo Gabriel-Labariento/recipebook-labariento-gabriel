@@ -36,6 +36,7 @@ class RecipeAdmin(admin.ModelAdmin):
         })
     ]
 
+
 admin.site.register(Recipe, RecipeAdmin)
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
