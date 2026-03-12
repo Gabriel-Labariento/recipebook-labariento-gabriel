@@ -1,5 +1,5 @@
 from django.db import models
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.contrib.auth.models import User
 
 
@@ -35,11 +35,10 @@ class Recipe(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('ledger:recipe', args=[str(self.pk)])
+        return reverse('recipe_detail', args=[str(self.pk)])
 
     def get_link_string(self):
-        recipe_number = self.name.removeprefix("Recipe ")
-        return '/recipe/{}'.format(recipe_number)
+        return '/recipe/{}'.format(self.pk)
 
 
 class RecipeIngredient(models.Model):

@@ -24,9 +24,9 @@ def recipes_list(request):
 
 
 @login_required
-def recipe(request, recipe_number):
-    recipe_name = "Recipe {}".format(recipe_number)
-    recipe = Recipe.objects.get(name=recipe_name)
+def recipe(request, pk):
+    recipe = Recipe.objects.get(pk=pk)
+    recipe_name = recipe.name
     recipe_ingredients = Ingredient.objects.filter(
                         recipe__recipe__name=recipe_name)
     context = {
@@ -43,9 +43,12 @@ class RecipeImageAddView(LoginRequiredMixin, CreateView):
     template_name = "ledger/recipe_add_image.html"
 
     def get_success_url(self):
-        return reverse_lazy('ledger:recipe', kwargs={ '': self.object.pk })
+        return reverse_lazy('ledger:recipe_detail', kwargs={ 'pk': self.object.recipe.pk })
 
 
 class RecipeAddView(LoginRequiredMixin, CreateView):
     model = Recipe
     form_class = RecipeForm
+
+    def get_success_url(self):
+        return reverse_lazy('ledger:recipe_detail', kwargs={ 'pk': self.object.pk })
