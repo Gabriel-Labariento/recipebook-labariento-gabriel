@@ -1,0 +1,12 @@
+{% extends 'ledger/base_ledger.html' %}
+{% if user.is_authenticated %}
+{% block title %}Add Recipe Image{% endblock %}
+{% block header %}<h2>Add new Image</h2>{% endblock %}
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}
+{%endif%}
